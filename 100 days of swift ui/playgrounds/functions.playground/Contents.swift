@@ -62,3 +62,49 @@ func printTimesTable(for number: Int) {
 }
 
 printTimesTable(for: 5)
+
+// Default Parameters
+func printMultipleTables(for number: Int, end: Int = 12) {
+    for i in 1...end {
+        print("\(i) X \(number) is \(i * number)")
+    }
+}
+
+printMultipleTables(for: 4)
+
+var characters = ["Lana", "Pam", "Ray", "Sterling"]
+print(characters.count)
+// This defaults to keepingCapacity = false
+characters.removeAll(keepingCapacity: true)
+print(characters.count)
+
+// Error Handling in Functions
+enum PasswordError: Error {
+    case short, obvious
+}
+
+func checkPassword(_ password: String) throws -> String {
+    if password.count < 5 { throw PasswordError.short }
+    if password == "12345" { throw PasswordError.obvious }
+    
+    if password.count < 8 {
+        return "OK"
+    } else if password.count < 10 {
+        return "Good"
+    } else {
+        return "Excellent"
+    }
+}
+
+let password = "1234"
+do {
+    let result = try checkPassword(password)
+    print("Password Raiting: \(result)")
+} catch PasswordError.short{
+    print("Please use a longer password")
+} catch PasswordError.obvious{
+    print("I have the same combination on my luggage")
+} catch {
+    print("There was an error: \(error.localizedDescription)")
+}
+
