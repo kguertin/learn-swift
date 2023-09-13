@@ -52,3 +52,22 @@ let captainFirstTeam = team.sorted(by: {(name1: String, name2: String) -> Bool i
 })
 
 print(captainFirstTeam)
+
+// can also use shorthand for above code that has hard requirements for closures
+let captainFirstTeamSorted = team.sorted {name1, name2 in
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+    
+    return name1 < name2
+}
+
+print(captainFirstTeamSorted)
+
+let tOnly = team.filter { $0.hasPrefix("T") }
+print(tOnly)
+
+let uppercaseTeam = team.map { $0.uppercased() }
+print(uppercaseTeam)
