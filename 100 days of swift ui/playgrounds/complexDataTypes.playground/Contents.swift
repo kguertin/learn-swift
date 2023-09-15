@@ -40,3 +40,26 @@ print(archer.vacationRemaining)
 let kane = Employee(name: "Lana Kane")
 let poovey = Employee(name: "Pam Poovey", vacationRemaining: 35)
 
+//Computing properties dynamically
+struct EmployeeStruct {
+    let name: String
+    var vactionAllocated = 14
+    var vacationTaken = 0
+    
+    // Calculated Dynamically
+    var vacationRemaining: Int {
+        get {
+            vactionAllocated - vacationTaken
+        }
+        set {
+            vactionAllocated = vacationTaken + newValue
+        }
+    }
+}
+
+var marc = EmployeeStruct(name: "Marc Gasol")
+marc.vacationTaken += 4
+archer.vacationRemaining = 5
+print(marc.vacationRemaining)
+
+
