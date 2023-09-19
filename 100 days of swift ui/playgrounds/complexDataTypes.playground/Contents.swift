@@ -107,3 +107,30 @@ struct Player {
 let player = Player(name: "Megan R")
 print(player.number)
 
+// Access Control
+struct BankAccount {
+    private(set) var funds = 0
+    
+    mutating func deposit(_ amount: Int) {
+        funds += amount
+    }
+    
+    mutating func withdrow(_ amount: Int) -> Bool {
+        if funds > amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+var account = BankAccount()
+account.deposit(100)
+let success = account.withdrow(200)
+if success {
+    print("Withdrew money successfully")
+} else {
+    print("Failed to get the money")
+}
+
