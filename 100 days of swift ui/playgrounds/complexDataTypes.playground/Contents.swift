@@ -134,3 +134,35 @@ if success {
     print("Failed to get the money")
 }
 
+// Static Methods
+struct School {
+    static var studentCount = 0
+    
+    // Does not need to be marked as mutating like instances of structs.
+    static func add(student: String) {
+        print("\(student) joined the school.")
+        studentCount += 1
+    }
+}
+
+School.add(student: "Taylor Swift")
+print(School.studentCount)
+
+// One use is to store constant data that you access accross app.
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let saveFileName = "settings.json"
+    static let homeURL = "https://www.hackingwithswift.com"
+}
+
+struct ValidEmployee {
+    let username: String
+    let password: String
+    
+    static let example = ValidEmployee(username: "marcGasol", password: "bigSpain123")
+}
+
+let testEmployee = ValidEmployee.example
+print(testEmployee.username)
+print(testEmployee.password)
+
