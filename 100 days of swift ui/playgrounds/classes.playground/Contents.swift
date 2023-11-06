@@ -89,3 +89,48 @@ var user3 = user2.copy()
 user3.username = "Marc"
 print(user3.username)
 
+// Deinitalizers - run when the LAST remaining refernce to a class instance is destroyed
+
+class NewUser {
+    let id: Int
+    init (id: Int) {
+        self.id = id
+        print("User \(id): I'm alive!")
+    }
+    
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+
+var users = [NewUser]()
+for i in 1...3 {
+    let user = NewUser(id: i)
+    print("User \(user.id): I'm in control!")
+    users.append(user)
+}
+print("Loop finished")
+users.removeAll()
+print("Array is clear")
+
+
+// Variables inside classes
+class SiteUser {
+    var name = "Paul"
+}
+
+var user = SiteUser()
+user.name = "taylor"
+user = SiteUser()
+print(user.name)
+
+// ***********************************************
+// Can have four types of class:
+// 1) Constant class with constant properties
+// 2) constat class with variable properties
+// 3) variable class with constant properties
+// 4) variable class with variable properties
+// ***********************************************
+// Different from structs as constant stucts cannot have properties changed even if properties are variable.
+
+
