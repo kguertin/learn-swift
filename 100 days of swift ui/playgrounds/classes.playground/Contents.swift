@@ -46,3 +46,24 @@ joseph.work()
 
 let novall = Developer(hours: 8)
 novall.printSummary()
+
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConvertible: Bool
+    
+    init(isElectric: Bool, isConvertible: Bool) {
+        
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+
+    }
+}
+
+let teslax = Car(isElectric: true, isConvertible: false)
