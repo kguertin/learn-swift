@@ -66,4 +66,26 @@ class Car: Vehicle {
     }
 }
 
-let teslax = Car(isElectric: true, isConvertible: false)
+let teslaX = Car(isElectric: true, isConvertible: false)
+
+// Reference Types - Classes share data across instances, structs do not.
+class User {
+    var username = "Anonymous"
+    
+    func copy() -> User {
+        let user = User()
+        user.username = username
+        return user
+    }
+}
+
+var user1 = User()
+var user2 = user1
+user2.username = "Taylor"
+print("\(user1.username)")
+print("\(user2.username)")
+
+var user3 = user2.copy()
+user3.username = "Marc"
+print(user3.username)
+
